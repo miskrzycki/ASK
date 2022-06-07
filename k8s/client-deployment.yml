@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: client-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: web
+  template:
+    metadata:
+      labels:
+        component: web
+    spec:
+      containers:
+        - name: client
+          image: registry.digitalocean.com/iskra-registry/project-client@sha256:4c112a478887e655865298dd6516f1c53f1dfdce3ec7e0ccc7ddbc96c6dc8083
+          ports:
+            - containerPort: 3000
