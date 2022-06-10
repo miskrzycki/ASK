@@ -2,4 +2,4 @@
 #kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.2.0/deploy/static/provider/cloud/deploy.yaml
 
 #tworzenie hasła do bazy danych:
-#kubectl --kubeconfig=iskra-kubeconfig.yaml create secret generic pgpassword --from-literal PGPASSWORD=12345test
+#kubectl --kubeconfig=iskra-kubeconfig.yaml create secret generic pgpassword --from-literal PGPASSWORD=SomePassword

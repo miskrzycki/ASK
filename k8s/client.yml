@@ -1,7 +1,8 @@
+### Deployment  ###
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: client-deployment
+  name: client
 spec:
   replicas: 1
   selector:
@@ -17,3 +18,18 @@ spec:
           image: registry.digitalocean.com/iskra-registry/project-client@sha256:4c112a478887e655865298dd6516f1c53f1dfdce3ec7e0ccc7ddbc96c6dc8083
           ports:
             - containerPort: 3000
+
+            apiVersion: v1
+
+### Service  ###       
+kind: Service
+metadata:
+  name: client-service
+spec:
+  type: ClusterIP
+  selector:
+    component: web
+  ports:
+    - port: 3000
+      targetPort: 3000
+

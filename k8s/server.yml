@@ -1,7 +1,8 @@
+### Deployment  ###
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: server-deployment
+  name: server
 spec:
   replicas: 1
   selector:
@@ -31,3 +32,16 @@ spec:
                 secretKeyRef:
                   name: pgpassword
                   key: PGPASSWORD
+                  
+### Service  ###
+apiVersion: v1
+kind: Service
+metadata:
+  name: server-cluster-ip-service
+spec:
+  type: ClusterIP
+  selector:
+    component: server
+  ports:
+    - port: 5000
+      targetPort: 5000
